@@ -223,6 +223,25 @@ section {
 .menu-toggle {
     display: none;
 }
+.logo {
+    display: block;
+    width: 64px;
+    height: 64px;
+}
+
+.logo text {
+    font-family: var(--font-mono);
+    fill: var(--body-text-color);
+}
+
+.logo-frame { stroke: var(--gold); }
+.logo-dots  { fill: var(--gold); }
+.logo-code  { stroke: var(--body-text-color); }
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
 
 /* =========================================================
    6. Hero

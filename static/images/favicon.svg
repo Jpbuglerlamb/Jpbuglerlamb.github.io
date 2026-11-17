@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    .ring { stroke: #b08d57; }
+    .code { stroke: #1c2a44; }
+    @media (prefers-color-scheme: dark) {
+      .ring { stroke: #c9a66b; }
+      .code { stroke: #efe8da; }
+    }
+  </style>
+  <circle class="ring" cx="50" cy="50" r="44" fill="none" stroke-width="7" />
+  <g class="code" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 38,34 L 22,50 L 38,66" />
+    <path d="M 62,34 L 78,50 L 62,66" />
+    <path d="M 55,30 L 45,70" />
+  </g>
+</svg>
