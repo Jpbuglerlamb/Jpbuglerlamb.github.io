@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Joan Pere – web developer with an architecture background. Projects in Python, JavaScript and AI. Based in Dundee, open to roles in France and remote.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <title>Joan Pere – Web Developer</title>
+</head>
+<body>
+<main>
+  <header class="site-header">
+    <h1>Joan Pere</h1>
+    <nav>
+      <ul>
+          <li><a href="#me">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+      <div class="dim" aria-hidden="true"><span>1140mm</span></div>
+
+      <div class="hero-text">
+        <p class="intro-text">
+          <span class="sr-only">Designing buildings, now building software.</span>
+          <span class="typed-ghost" id="typed-ghost" aria-hidden="true"></span>
+          <span class="typed-live" aria-hidden="true"><span id="typed"></span><span class="dot">_</span></span>
+        </p>
+
+        <ol class="notes">
+          <li><span class="note-num">01</span>Six years of architecture: design, detail and deadlines</li>
+          <li><span class="note-num">02</span>Full-stack apps in Python, HTML/CSS, Flask and JavaScript, plus local AI</li>
+        </ol>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <figure class="hero-figure">
+        <div class="photo-wrap">
+          <img class="about-photo" src="{{ url_for('static', filename='images/me.png') }}" alt="Photo of Joan Pere">
+        </div>
+        <figcaption>Fig. 1 — The developer</figcaption>
+      </figure>
+
+      <dl class="title-block">
+        <div><dt>Drawn by</dt><dd>Joan Pere</dd></div>
+        <div><dt>Discipline</dt><dd>Full-stack developer</dd></div>
+        <div><dt>Status</dt><dd><span class="status-dot" aria-hidden="true"></span>HND Computer Science · 2028</dd></div>
+        <div><dt>Location</dt><dd>Dundee → France / remote</dd></div>
+      </dl>
+  </section>
+  <section id="me">
+        <h2>About Me</h2>
+        <p>
+            I'm a web developer with a background in architecture. After six years of
+            studying design, I moved into code. I build full-stack projects with Python, HTML/CSS and
+            JavaScript, and I'm especially interested in running AI models locally.
+        </p>
+        <p>
+            I speak English and French, and I'm looking for a web development role in
+            France or remote.
+        </p>
+  </section>
+  <section id="projects">
+      <h2>Projects</h2>
+      {% for project in projects %}
+      <article class="project">
+          <h3>{{ project.name }}</h3>
+          <p>{{ project.description }}</p>
+
+          <ul class="tags">
+            {% for tag in project.tags %}
+            <li>{{ tag }}</li>
+            {% endfor %}
+          </ul>
+
+          <p class="links">
+            <a href="{{ project.code_url }}">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+            </a>
+            {% if project.live_url %}
+              <a href="{{ project.live_url }}">Live site</a>
+            {% else %}
+              <span>Not deployed yet</span>
+            {% endif %}
+          </p>
+      </article>
+      {% endfor %}
+  </section>
+  <section id="experience">
+    <h2>Experience</h2>
+      {% for item in experience %}
+      <article class="entry">
+          <div class="entry-header">
+            <h3>{{ item.title }}</h3>
+            <p class="entry-meta">{{ item.place }}</p>
+          </div>
+          <span class="entry-date">{{ item.dates }}</span>
+          <ul>
+            {% for point in item.points %}
+            <li>{{ point }}</li>
+            {% endfor %}
+          </ul>
+      </article>
+      {% endfor %}
+  </section>
+  <section id="education">
+      <h2>Education</h2>
+      {% for item in experience %}
+      <article class="entry">
+          <div class="entry-header">
+            <h3>{{ item.title }}</h3>
+            <p class="entry-meta">{{ item.place }}</p>
+          </div>
+          <span class="entry-date">{{ item.dates }}</span>
+          <ul>
+            {% for point in item.points %}
+            <li>{{ point }}</li>
+            {% endfor %}
+          </ul>
+      </article>
+      {% endfor %}
+  </section>
+</main>
+<script src="{{ url_for('static', filename='JS/typing.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/reveal.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/nav.js') }}"></script>
+<footer id="contact" class="site-footer">
+  <div class="contact-panel">
+    <h2>Contact</h2>
+    <p class="contact-title">Let's build something together.</p>
+    <p class="contact-sub">
+      I'm open to junior web development roles in France or remote.
+      The quickest way to reach me is by email.
+    </p>
+
+    <ul class="contact-links">
+      <li>
+        <a class="contact-card" href="mailto:YOUR-EMAIL-HERE">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <span>
+            <strong>Email</strong>
+            <small>Best way to reach me</small>
+          </span>
+          <i class="fa-solid fa-arrow-right contact-arrow" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li>
+        <a class="contact-card" href="https://github.com/Jpbuglerlamb">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          <span>
+            <strong>GitHub</strong>
+            <small>See my code</small>
+          </span>
+          <i class="fa-solid fa-arrow-right contact-arrow" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li>
+        <a class="contact-card" href="https://www.linkedin.com/in/joan-bugler-lamb-141775375">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          <span>
+            <strong>LinkedIn</strong>
+            <small>Connect with me</small>
+          </span>
+          <i class="fa-solid fa-arrow-right contact-arrow" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <p class="footer-note">© 2026 Joan Pere · Built with Flask, HTML, CSS &amp; JavaScript</p>
+</footer>
+</body>
+</html>
