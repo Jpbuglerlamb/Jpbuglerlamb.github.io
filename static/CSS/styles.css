@@ -166,6 +166,9 @@ section {
     transform: scaleX(1);
     transform-origin: left;
 }
+.menu-toggle {
+    display: none;
+}
 
 /* =========================================================
    6. Hero
@@ -820,9 +823,80 @@ section {
         justify-self: start;
         margin-bottom: 1rem;
     }
+        /* ---- Menu button ---- */
+    .site-header {
+        flex-wrap: nowrap;
+    }
+
+    .menu-toggle {
+        display: grid;
+        place-content: center;
+        gap: 6px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--body-text-color);
+        transition: transform 0.3s ease;
+    }
+
+    /* the two lines cross into an × when open */
+    .menu-toggle[aria-expanded="true"] span:first-child {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:last-child {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+
+    /* ---- Slide-down panel ---- */
+    .site-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 0.5rem 1.5rem 1.5rem;
+        background: rgba(var(--page-bg-rgb), 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        clip-path: inset(0 0 100% 0);
+        visibility: hidden;
+        transition: clip-path 0.35s ease, visibility 0s linear 0.35s;
+    }
+
+    .site-header.menu-open .site-nav {
+        clip-path: inset(0 0 0 0);
+        visibility: visible;
+        transition: clip-path 0.35s ease;
+    }
+
     .site-header ul {
-        flex-wrap: wrap;
-        gap: 0.5rem 1rem;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .site-header li + li {
+        border-top: 1px solid var(--border);
+    }
+
+    .site-header nav a {
+        display: block;
+        padding: 0.9rem 0;
+        font-size: 1rem;
+    }
+
+    .site-header nav a::after {
+        display: none;
     }
 }
 
@@ -842,4 +916,6 @@ section {
     .contact-card:hover { transform: none; }
     .contact-card:hover .contact-arrow { transform: none; }
     .contact-card:hover > i:first-child { transform: none; }
+    .site-nav,
+    .menu-toggle span { transition: none; }
 }

@@ -19,3 +19,28 @@
 
   sections.forEach(section => observer.observe(section));
 }
+{
+  const header = document.querySelector(".site-header");
+  const toggle = document.querySelector(".menu-toggle");
+
+  function setMenu(open) {
+    header.classList.toggle("menu-open", open);
+    toggle.setAttribute("aria-expanded", open);
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+
+  // Tap the button: open if closed, close if open
+  toggle.addEventListener("click", () => {
+    setMenu(!header.classList.contains("menu-open"));
+  });
+
+  // Tap a link: close the menu (the page still scrolls to the section)
+  header.querySelectorAll(".site-nav a").forEach(link => {
+    link.addEventListener("click", () => setMenu(false));
+  });
+
+  // Escape key closes it too
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") setMenu(false);
+  });
+}
