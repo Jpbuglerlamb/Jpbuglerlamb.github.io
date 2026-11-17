@@ -3,3 +3,7 @@ __pycache__/
 .idea/
 build/
 .DS_Store
+static/images/me.png              ← your photo
+static/images/favicon.svg
+static/images/favicon-32.png
+static/images/apple-touch-icon.png
