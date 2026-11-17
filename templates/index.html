@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
+    <meta name="color-scheme" content="light dark">
     <meta name="description" content="Joan Pere – web developer with an architecture background. Projects in Python, JavaScript and AI. Based in Dundee, open to roles in France and remote.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
+    <script>
+      {
+        let theme = null;
+        try { theme = localStorage.getItem("theme"); } catch (e) {}
+        if (!theme) {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -31,36 +42,35 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" role="switch" aria-checked="false" aria-label="Dark mode">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <span class="theme-knob" aria-hidden="true"></span>
+      </button>
   </header>
-
   <section class="hero">
       <div class="dim" aria-hidden="true"><span>1140mm</span></div>
-
       <div class="hero-text">
         <p class="intro-text">
           <span class="sr-only">Designing buildings, now building software.</span>
           <span class="typed-ghost" id="typed-ghost" aria-hidden="true"></span>
           <span class="typed-live" aria-hidden="true"><span id="typed"></span><span class="dot">_</span></span>
         </p>
-
         <ol class="notes">
           <li><span class="note-num">01</span>Six years of architecture: design, detail and deadlines</li>
           <li><span class="note-num">02</span>Full-stack apps in Python, HTML/CSS, Flask and JavaScript, plus local AI</li>
         </ol>
-
         <div class="hero-actions">
           <a class="btn btn-primary" href="#projects">View projects</a>
           <a class="btn btn-ghost" href="#contact">Get in touch</a>
         </div>
       </div>
-
       <figure class="hero-figure">
         <div class="photo-wrap">
           <img class="about-photo" src="{{ url_for('static', filename='images/me.png') }}" alt="Photo of Joan Pere">
         </div>
         <figcaption>Fig. 1 — The developer</figcaption>
       </figure>
-
       <dl class="title-block">
         <div><dt>Drawn by</dt><dd>Joan Pere</dd></div>
         <div><dt>Discipline</dt><dd>Full-stack developer</dd></div>
@@ -188,5 +198,6 @@
 <script src="{{ url_for('static', filename='JS/typing.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/reveal.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/nav.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/theme.js') }}"></script>
 </body>
 </html>

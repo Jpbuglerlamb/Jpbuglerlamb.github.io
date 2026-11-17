@@ -24,6 +24,20 @@
     --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --page-bg: #0f1a2b;           /* navy blazer */
+    --page-bg-rgb: 15, 26, 43;
+    --surface: #16243a;
+    --border: #2a3a55;
+    --body-text-color: #efe8da;   /* cream */
+    --muted: #a59e8f;
+    --accent: #6fbf98;            /* lighter racing green */
+    --accent-rgb: 111, 191, 152;
+    --accent-2: #d9737f;          /* lighter burgundy */
+    --gold: #c9a66b;
+}
+
 
 /* =========================================================
    2. Base
@@ -135,6 +149,46 @@ section {
     font-size: 0.85rem;
     color: var(--body-text-color);
     text-decoration: none;
+}
+.site-nav {
+    margin-left: auto;
+}
+.theme-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 64px;
+    height: 32px;
+    margin-left: 1.25rem;
+    padding: 0 9px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent);
+}
+
+.theme-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease;
+}
+
+:root[data-theme="dark"] .theme-knob {
+    transform: translateX(32px);
 }
 .site-header nav a {
     position: relative;
@@ -808,8 +862,8 @@ section {
     }
 
     .hero .photo-wrap {
-        max-width: 220px;
-        order: -1;
+        max-width: 240px;
+        margin-inline: auto;
     }
 
     /* Date pill drops under the title */
@@ -826,6 +880,7 @@ section {
         /* ---- Menu button ---- */
     .site-header {
         flex-wrap: nowrap;
+        gap: 0.5rem;
     }
 
     .menu-toggle {
@@ -856,6 +911,13 @@ section {
 
     .menu-toggle[aria-expanded="true"] span:last-child {
         transform: translateY(-4px) rotate(-45deg);
+    }
+    .theme-toggle {
+        margin-left: auto;
+    }
+    .menu-toggle {
+        order: 2;
+        margin-left: 0;
     }
 
     /* ---- Slide-down panel ---- */
@@ -918,4 +980,5 @@ section {
     .contact-card:hover > i:first-child { transform: none; }
     .site-nav,
     .menu-toggle span { transition: none; }
+    .theme-knob { transition: none; }
 }

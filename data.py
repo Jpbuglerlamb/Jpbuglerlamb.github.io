@@ -79,10 +79,14 @@ EDUCATION = [
     },
     {
         "title": "HND Computer Science",
-        "place": "[College name]",
+        "place": "Dundee and Angus College",
         "dates": "2026 – 2028 (expected)",
         "points": [
-            "[A module or two you're studying, e.g. Software Development, Databases]",
+            "Software development",
+            "Computer Systems Fundamentals",
+            "Web Development",
+            "Database Design",
+            "Professionalism and ethics in computing",
         ],
     },
 ]
