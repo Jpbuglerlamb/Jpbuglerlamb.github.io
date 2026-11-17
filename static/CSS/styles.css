@@ -564,6 +564,12 @@ section {
     border-radius: var(--radius);
     transition: border-color 0.2s ease, transform 0.2s ease;
 }
+.project .project-role {
+    margin: -0.25rem 0 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-2);
+}
 
 .project:hover {
     border-color: var(--accent);

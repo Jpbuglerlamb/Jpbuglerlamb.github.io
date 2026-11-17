@@ -23,6 +23,17 @@ PROJECTS = [
         "code_url": "https://github.com/Jpbuglerlamb/SunGrid",
         "live_url": None,
     },
+    {
+        "name": "Study planner",
+        "description": (
+            "A website that helps college students keep track of their classes, assessment deadlines and progress, with a calendar showing every due date. "
+            "Built by a small team as a Year 1 Team Working project at Dundee and Angus College, sharing one GitHub repository and splitting the work between the frontend design and the Flask backend."
+        ),
+        "role": "Team of 4 · In progress · I built the Flask API, SQLite database and user accounts, and connected the calendar to the planner",
+        "tags": ["Python", "Flask", "SQLite", "JavaScript", "HTML/CSS"],
+        "code_url": "https://github.com/Jpbuglerlamb/Group_project",
+        "live_url": None,
+    },
 ]
 
 EXPERIENCE = [

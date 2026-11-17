@@ -131,6 +131,9 @@
       {% for project in projects %}
       <article class="project">
           <h3>{{ project.name }}</h3>
+          {% if project.role %}
+          <p class="project-role">{{ project.role }}</p>
+          {% endif %}
           <p>{{ project.description }}</p>
 
           <ul class="tags">
@@ -140,14 +143,17 @@
           </ul>
 
           <p class="links">
-            <a href="{{ project.code_url }}">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> Code
-            </a>
-            {% if project.live_url %}
+              {% if project.code_url %}
+              <a href="{{ project.code_url }}">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>Code
+              </a>
+              {% endif %}
+
+              {% if project.live_url %}
               <a href="{{ project.live_url }}">Live site</a>
-            {% else %}
+              {% else %}
               <span>Not deployed yet</span>
-            {% endif %}
+              {% endif %}
           </p>
       </article>
       {% endfor %}
