@@ -32,7 +32,7 @@ PROJECTS = [
         "role": "Team of 4 · In progress · I built the Flask API, SQLite database and user accounts, and connected the calendar to the planner",
         "tags": ["Python", "Flask", "SQLite", "JavaScript", "HTML/CSS"],
         "code_url": "https://github.com/Jpbuglerlamb/Group_project",
-        "live_url": None,
+        "live_url": "https://jpbuglerlamb.github.io/Group_project/",
     },
 ]
 
