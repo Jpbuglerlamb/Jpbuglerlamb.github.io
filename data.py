@@ -52,7 +52,7 @@ EXPERIENCE = [
         "place": "St Andrews Links Trust · St Andrews",
         "dates": "May 2022 – Sep 2024",
         "points": [
-            "Maintained turf quality to elite standards, applying sustainable "
+            "Maintained turf quality to a world class standard standard, applying sustainable "
             "practices (water and grass recycling)",
             "Developed teamwork, time management, problem-solving, and attention to detail",
         ],
