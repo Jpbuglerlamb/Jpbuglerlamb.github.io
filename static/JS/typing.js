@@ -1,11 +1,7 @@
 {
-  const parts = [
-    { text: "Designing " },
-    { text: "buildings", highlight: true },
-    { text: ", now building " },
-    { text: "software", highlight: true },
-    { text: "." },
-  ];
+  // The sentence comes from translations.py, via data-parts in index.html
+  const intro = document.querySelector(".intro-text");
+  const parts = JSON.parse(intro.dataset.parts);
 
   const target = document.getElementById("typed");
   const ghost = document.getElementById("typed-ghost");

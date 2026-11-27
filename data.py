@@ -119,3 +119,7 @@ EDUCATION = [
         ],
     },
 ]
+LANGUAGES = [
+    {"name": "English", "level": "Native", "note": "Born into a British family"},
+    {"name": "French", "level": "Native", "note": "Born and raised in France"},
+]

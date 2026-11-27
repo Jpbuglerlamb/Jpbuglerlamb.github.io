@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,12 +23,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <title>Joan Pere – Full-Stack Developer</title>
+    <meta name="description" content="{{ t.description }}">
+    <title>{{ t.title }}</title>
 </head>
 <body>
 <main>
   <header class="site-header">
-      <svg class="logo" viewBox="0 0 100 100" role="img" aria-label="Joan Pere, full-stack developer">
+      <svg class="logo" viewBox="0 0 100 100" role="img" aria-label="{{ t.logo_label }}">
           <defs>
             <!-- invisible guide arcs for the ring text -->
             <path id="logo-top" d="M 15,50 A 35,35 0 0,1 85,50" />
@@ -64,21 +65,53 @@
       </svg>
       <h1>Joan Pere</h1>
 
-      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="{{ t.menu_open }}" data-label-open="{{ t.menu_open }}" data-label-close="{{ t.menu_close }}">
         <span></span>
         <span></span>
       </button>
 
       <nav id="site-nav" class="site-nav">
         <ul>
-          <li><a href="#me">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#me">{{ t.nav_about }}</a></li>
+          <li><a href="#projects">{{ t.nav_projects }}</a></li>
+          <li><a href="#experience">{{ t.nav_experience }}</a></li>
+          <li><a href="#education">{{ t.nav_education }}</a></li>
+          <li><a href="#contact">{{ t.nav_contact }}</a></li>
         </ul>
       </nav>
-      <button class="theme-toggle" role="switch" aria-checked="false" aria-label="Dark mode">
+      {% if lang == 'fr' %}
+        {% set switch_url = url_for('home') %}
+        {% set switch_lang = 'en' %}
+        {% set switch_label = 'View this site in English' %}
+      {% else %}
+        {% set switch_url = url_for('home_fr') %}
+        {% set switch_lang = 'fr' %}
+        {% set switch_label = 'Voir le site en français' %}
+      {% endif %}
+
+      <a class="lang-toggle{% if lang == 'fr' %} is-fr{% endif %}"
+         href="{{ switch_url }}" hreflang="{{ switch_lang }}" lang="{{ switch_lang }}"
+         aria-label="{{ switch_label }}">
+        <span class="flag flag-uk" aria-hidden="true">
+          <svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice">
+            <clipPath id="uk-clip"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+            <rect width="60" height="30" fill="#012169"/>
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+            <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-clip)" stroke="#C8102E" stroke-width="4"/>
+            <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+          </svg>
+        </span>
+        <span class="flag flag-fr" aria-hidden="true">
+          <svg viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice">
+            <rect width="1" height="2" fill="#0055A4"/>
+            <rect x="1" width="1" height="2" fill="#fff"/>
+            <rect x="2" width="1" height="2" fill="#EF4135"/>
+          </svg>
+        </span>
+        <span class="lang-knob" aria-hidden="true"></span>
+      </a>
+      <button class="theme-toggle" role="switch" aria-checked="false" aria-label="{{ t.dark_mode }}">
           <i class="fa-solid fa-sun" aria-hidden="true"></i>
           <i class="fa-solid fa-moon" aria-hidden="true"></i>
           <span class="theme-knob" aria-hidden="true"></span>
@@ -87,47 +120,49 @@
   <section class="hero">
       <div class="dim" aria-hidden="true"><span>1140mm</span></div>
       <div class="hero-text">
-        <p class="intro-text">
-          <span class="sr-only">Designing buildings, now building software.</span>
+        <p class="intro-text" data-parts='{{ t.headline | tojson }}'>
+          <span class="sr-only">{{ t.headline | map(attribute="text") | join }}</span>
           <span class="typed-ghost" id="typed-ghost" aria-hidden="true"></span>
           <span class="typed-live" aria-hidden="true"><span id="typed"></span><span class="dot">_</span></span>
         </p>
         <ol class="notes">
-          <li><span class="note-num">01</span>Six years of architecture: design, detail and deadlines</li>
-          <li><span class="note-num">02</span>Full-stack apps in Python, HTML/CSS, Flask and JavaScript, plus local AI</li>
+          <li><span class="note-num">01</span>{{ t.note_1 }}</li>
+          <li><span class="note-num">02</span>{{ t.note_2 }}</li>
         </ol>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects">View projects</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          <a class="btn btn-primary" href="#projects">{{ t.btn_projects }}</a>
+          <a class="btn btn-ghost" href="#contact">{{ t.btn_contact }}</a>
         </div>
       </div>
       <figure class="hero-figure">
         <div class="photo-wrap">
-          <img class="about-photo" src="{{ url_for('static', filename='images/me.png') }}" alt="Photo of Joan Pere">
+          <img class="about-photo" src="{{ url_for('static', filename='images/me.png') }}" alt="{{ t.photo_alt }}">
         </div>
-        <figcaption>Fig. 1 — The developer</figcaption>
+        <figcaption>{{ t.fig_caption }}</figcaption>
       </figure>
       <dl class="title-block">
-        <div><dt>Drawn by</dt><dd>Joan Pere Bugler-Lamb</dd></div>
-        <div><dt>Discipline</dt><dd>Full-stack developer</dd></div>
-        <div><dt>Status</dt><dd><span class="status-dot" aria-hidden="true"></span>HND Computer Science · 2028</dd></div>
-        <div><dt>Location</dt><dd>Dundee → France / remote</dd></div>
+        <div><dt>{{ t.tb_drawn }}</dt><dd>Joan Pere Bugler-Lamb</dd></div>
+        <div><dt>{{ t.tb_discipline }}</dt><dd>{{ t.tb_discipline_value }}</dd></div>
+        <div><dt>{{ t.tb_status }}</dt><dd><span class="status-dot" aria-hidden="true"></span>{{ t.tb_status_value }}</dd></div>
+        <div><dt>{{ t.tb_location }}</dt><dd>{{ t.tb_location_value }}</dd></div>
       </dl>
   </section>
   <section id="me">
-        <h2>About Me</h2>
-        <p>
-            I'm a full-stack developer with a background in architecture. After six years of
-            studying design, I moved into coding. I have built full-stack projects with Python, Flask,
-            HTML/CSS and JavaScript, and I'm especially interested in running AI models locally.
-        </p>
-        <p>
-            I speak English and French, and I'm looking for a web development role in
-            France or remote.
-        </p>
+        <h2>{{ t.about_title }}</h2>
+        <p>{{ t.about_1 }}</p>
+        <p>{{ t.about_2 }}</p>
+        <ul class="languages">
+          {% for language in languages %}
+          <li>
+            <strong>{{ language.name }}</strong>
+            <span class="lang-level">{{ language.level }}</span>
+            <small>{{ language.note }}</small>
+          </li>
+          {% endfor %}
+        </ul>
   </section>
   <section id="projects">
-      <h2>Projects</h2>
+      <h2>{{ t.projects_title }}</h2>
       {% for project in projects %}
       <article class="project">
           <h3>{{ project.name }}</h3>
@@ -145,21 +180,21 @@
           <p class="links">
               {% if project.code_url %}
               <a href="{{ project.code_url }}">
-                <i class="fa-brands fa-github" aria-hidden="true"></i>Code
+                <i class="fa-brands fa-github" aria-hidden="true"></i>{{ t.code }}
               </a>
               {% endif %}
 
               {% if project.live_url %}
-              <a href="{{ project.live_url }}">Live site</a>
+              <a href="{{ project.live_url }}">{{ t.live_site }}</a>
               {% else %}
-              <span>Not deployed yet</span>
+              <span>{{ t.not_deployed }}</span>
               {% endif %}
           </p>
       </article>
       {% endfor %}
   </section>
   <section id="experience">
-    <h2>Experience</h2>
+    <h2>{{ t.experience_title }}</h2>
       {% for item in experience %}
       <article class="entry">
           <div class="entry-header">
@@ -176,7 +211,7 @@
       {% endfor %}
   </section>
   <section id="education">
-      <h2>Education</h2>
+      <h2>{{ t.education_title }}</h2>
       {% for item in education %}
       <article class="entry">
           <div class="entry-header">
@@ -195,19 +230,15 @@
 </main>
 <footer id="contact" class="site-footer">
   <div class="contact-panel">
-    <h2>Contact</h2>
-    <p class="contact-title">Let's build something together.</p>
-    <p class="contact-sub">
-      I'm open to junior web development roles in France or remote.
-      The quickest way to reach me is by email.
-    </p>
-
+    <h2>{{ t.contact_title }}</h2>
+    <p class="contact-title">{{ t.contact_heading }}</p>
+    <p class="contact-sub">{{ t.contact_sub }}</p>
     <ul class="contact-links">
       <li>
         <a class="contact-card" href="mailto:Joan.buglerlamb@outlook.com">
           <i class="fa-solid fa-envelope" aria-hidden="true"></i>
           <span>
-            <strong>Email</strong>
+            <strong>{{ t.email }}</strong>
             <small>Joan.buglerlamb@outlook.com</small>
           </span>
           <i class="fa-solid fa-arrow-right contact-arrow" aria-hidden="true"></i>
@@ -217,7 +248,7 @@
         <a class="contact-card" href="https://github.com/Jpbuglerlamb">
           <i class="fa-brands fa-github" aria-hidden="true"></i>
           <span>
-            <strong>GitHub</strong>
+            <small>{{ t.github_sub }}</small>
             <small>See my code</small>
           </span>
           <i class="fa-solid fa-arrow-right contact-arrow" aria-hidden="true"></i>
@@ -227,7 +258,7 @@
         <a class="contact-card" href="https://www.linkedin.com/in/joan-bugler-lamb-141775375">
           <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
           <span>
-            <strong>LinkedIn</strong>
+            <small>{{ t.linkedin_sub }}</small>
             <small>Connect with me</small>
           </span>
           <i class="fa-solid fa-arrow-right contact-arrow" aria-hidden="true"></i>
@@ -236,14 +267,14 @@
     </ul>
   </div>
   <p class="footer-note">
-    © 2026 Joan Pere · Built with Flask &amp; Jinja, frozen to static HTML with Frozen-Flask,
-    auto-deployed to GitHub Pages by
-    <a href="https://github.com/Jpbuglerlamb/Jpbuglerlamb.github.io/actions">GitHub Actions</a>
+      © 2026 Joan Pere · {{ t.footer_built }}
+      <a href="https://github.com/Jpbuglerlamb/Jpbuglerlamb.github.io/actions">GitHub Actions</a>
   </p>
 </footer>
 <script src="{{ url_for('static', filename='JS/typing.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/reveal.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/nav.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/theme.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/lang.js') }}"></script>
 </body>
 </html>

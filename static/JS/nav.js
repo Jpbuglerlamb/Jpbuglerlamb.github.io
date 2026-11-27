@@ -26,7 +26,8 @@
   function setMenu(open) {
     header.classList.toggle("menu-open", open);
     toggle.setAttribute("aria-expanded", open);
-    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    // labels come from data-label-open / data-label-close, so they're translated
+    toggle.setAttribute("aria-label", open ? toggle.dataset.labelClose : toggle.dataset.labelOpen);
   }
 
   // Tap the button: open if closed, close if open
