@@ -53,6 +53,7 @@ EXPERIENCE = [
         "dates": "Sep 2024 – Sep 2025",
         "points": [
             "Focused full-time on the final year of my architecture degree",
+            "Decided to move into computing and started building my first software projects",
         ],
     },
     {

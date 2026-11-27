@@ -136,7 +136,8 @@
       </div>
       <figure class="hero-figure">
         <div class="photo-wrap">
-          <img class="about-photo" src="{{ url_for('static', filename='images/me.png') }}" alt="{{ t.photo_alt }}">
+          <img class="about-photo" src="{{ url_for('static', filename='images/me.png') }}"
+     width="600" height="800" alt="{{ t.photo_alt }}">
         </div>
         <figcaption>{{ t.fig_caption }}</figcaption>
       </figure>
@@ -248,8 +249,8 @@
         <a class="contact-card" href="https://github.com/Jpbuglerlamb">
           <i class="fa-brands fa-github" aria-hidden="true"></i>
           <span>
+            <strong>GitHub</strong>
             <small>{{ t.github_sub }}</small>
-            <small>See my code</small>
           </span>
           <i class="fa-solid fa-arrow-right contact-arrow" aria-hidden="true"></i>
         </a>
@@ -258,8 +259,8 @@
         <a class="contact-card" href="https://www.linkedin.com/in/joan-bugler-lamb-141775375">
           <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
           <span>
+            <strong>LinkedIn</strong>
             <small>{{ t.linkedin_sub }}</small>
-            <small>Connect with me</small>
           </span>
           <i class="fa-solid fa-arrow-right contact-arrow" aria-hidden="true"></i>
         </a>

@@ -59,6 +59,7 @@ EXPERIENCE = [
         "dates": "sept. 2024 – sept. 2025",
         "points": [
             "Consacrée à plein temps à la dernière année de mon cursus d'architecture",
+            "Choix de me réorienter vers l'informatique et premiers projets logiciels",
         ],
     },
     {
