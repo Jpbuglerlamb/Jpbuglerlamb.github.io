@@ -48,6 +48,14 @@ EXPERIENCE = [
         ],
     },
     {
+        "title": "Career break",
+        "place": "Full-time study · Dundee",
+        "dates": "Sep 2024 – Sep 2025",
+        "points": [
+            "Focused full-time on the final year of my architecture degree",
+        ],
+    },
+    {
         "title": "Greenkeeper",
         "place": "St Andrews Links Trust · St Andrews",
         "dates": "May 2022 – Sep 2024",
@@ -61,11 +69,33 @@ EXPERIENCE = [
 
 EDUCATION = [
     {
-        "title": "Bachelor in Architecture",
+        "title": "HND Computer Science",
+        "place": "Dundee and Angus College",
+        "dates": "2026 – 2028 (expected)",
+        "points": [
+            "HNC awarded at the end of Year 1 (expected 2027)",
+            "Software development, web development and database design",
+            "Computer systems fundamentals",
+            "Professionalism and ethics in computing",
+        ],
+    },
+    {
+        "title": "Independent learning",
+        "place": "Self-directed",
+        "dates": "Ongoing",
+        "points": [
+            "Running open-source AI models locally (Hugging Face, llama.cpp)",
+            "Flask back ends with PostgreSQL and SQLite",
+            "CI/CD: this site is built and deployed automatically with GitHub Actions",
+        ],
+    },
+    {
+        "title": "Architecture (Bachelor's, not completed)",
         "place": "University of Dundee",
         "dates": "2019 – 2025",
         "points": [
             "Design, CAD and visualisation: AutoCAD, Revit, SketchUp, Adobe Creative Suite",
+            "Large design projects to deadlines, presented and defended at crits",
         ],
     },
     {
@@ -86,18 +116,6 @@ EDUCATION = [
             "SQA Higher French – A",
             "SQA Higher Art & Design – C",
             "SQA Higher Maths – C",
-        ],
-    },
-    {
-        "title": "HND Computer Science",
-        "place": "Dundee and Angus College",
-        "dates": "2026 – 2028 (expected)",
-        "points": [
-            "Software development",
-            "Computer Systems Fundamentals",
-            "Web Development",
-            "Database Design",
-            "Professionalism and ethics in computing",
         ],
     },
 ]
