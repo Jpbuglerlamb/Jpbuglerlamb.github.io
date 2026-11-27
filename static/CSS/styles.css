@@ -834,7 +834,15 @@ section {
     font-size: 0.75rem;
     color: var(--muted);
 }
-
+.footer-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 3px;
+}
+.footer-note a:hover {
+  color: var(--accent);
+}
 
 
 /* =========================================================
